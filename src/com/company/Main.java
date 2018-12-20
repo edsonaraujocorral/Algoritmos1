@@ -3,22 +3,22 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
-         double precos[] = new double[5];
-         precos[0] = 1000000;
-         precos[1] = 46000;
-         precos[2] = 16000;
-         precos[3] = 46000;
-         precos[4] = 17000;
+        Produto produtos[] = new Produto[5];
+        produtos[0] = new Produto("Lamborghini", 1000000);
+        produtos[1] = new Produto("Jipe", 46000);
+        produtos[2] = new Produto("Brasilia", 16000);
+        produtos[3] = new Produto("Smart", 46000);
+        produtos[4] = new Produto("Fusca", 17000);
 
-         int maisBarato = 0;
+        int maisBarato = 0;
+        for(int i = 0; i <= 4; i++) {
+            if(produtos[i].getPreco() < produtos[maisBarato].getPreco()) {
+                maisBarato = i;
+            }
+        }
 
-         for(int atual = 0; atual <= 4; atual++) {
-             if(precos[atual] < precos[maisBarato]) {
-                 maisBarato = atual;
-             }
-         }
-
-         System.out.println("O carro mais barato custa " + precos[maisBarato]);
+        System.out.println("O Veiculo mais barato e: " + produtos[maisBarato].getNome());
+        System.out.println("O valor e R$:" + produtos[maisBarato].getPreco());
 
     }
 }
