@@ -11,8 +11,14 @@ public class Main {
                 new Produto("Smart", 46000),
                 new Produto("Fusca", 17000)
         };
+        int maisBarato = buscaMenor(produtos);
 
+        System.out.println("O Veiculo mais barato e: " + produtos[maisBarato].getNome());
+        System.out.println("O valor e R$:" + produtos[maisBarato].getPreco());
 
+    }
+
+    public static int buscaMenor(Produto[] produtos) {
         int maisBarato = 0;
         for(int i = 0; i <= 4; i++) {
             if(produtos[i].getPreco() < produtos[maisBarato].getPreco()) {
@@ -20,8 +26,6 @@ public class Main {
             }
         }
 
-        System.out.println("O Veiculo mais barato e: " + produtos[maisBarato].getNome());
-        System.out.println("O valor e R$:" + produtos[maisBarato].getPreco());
-
+        return maisBarato;
     }
 }
