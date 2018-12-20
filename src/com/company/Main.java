@@ -11,17 +11,17 @@ public class Main {
                 new Produto("Smart", 46000)
         };
 
-        int maisBarato = buscaMenor(produtos, 4);
+        int maisBarato = buscaMenor(produtos, 0, 2);
         System.out.println("O Veiculo mais barato e: " + produtos[maisBarato].getNome());
         System.out.println("O valor e R$:" + produtos[maisBarato].getPreco());
 
     }
 
-    public static int buscaMenor(Produto[] produtos, int termino) {
+    public static int buscaMenor(Produto[] produtos, int inicio, int termino) {
         int maisBarato = 0;
         //int termino = produtos.length - 1;
 
-        for(int i = 0; i < termino; i++) {
+        for(int i = inicio; i < termino; i++) {
             if(produtos[i].getPreco() < produtos[maisBarato].getPreco()) {
                 maisBarato = i;
             }
