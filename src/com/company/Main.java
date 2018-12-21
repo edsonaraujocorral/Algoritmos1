@@ -11,21 +11,30 @@ public class Main {
                 new Produto("Smart", 46000),
                 new Produto("Fusca", 17000)
         };
-
-        ordena(produtos, produtos.length);
-
+        novoSort(produtos, produtos.length);
         for(Produto produto : produtos) {
-            System.out.println(produto.getNome() + " custa " + produto.getPreco());
+            System.out.println(produto.getNome() + " " + produto.getPreco());
         }
 
     }
+    private static void novoSort(Produto[] produtos, int quantidadeDeElementos) {
+        for(int atual = 0; atual < quantidadeDeElementos; atual++) {
+            int analise = atual;
+            while(analise > 0 && produtos[analise].getPreco() < produtos[analise - 1].getPreco()) {
+                Produto produtoAnalise = produtos[analise];
+                Produto produtoAnaliseMenos1 = produtos[analise - 1];
 
+                produtos[analise] = produtoAnaliseMenos1;
+                produtos[analise - 1] = produtoAnalise;
+                analise--;
+            }
+        }
+    }
     private static void ordena(Produto[] produtos, int quantidadeDeElementos) {
         for(int atual = 0; atual < quantidadeDeElementos - 1; atual++) {
             int menor = buscaMenor(produtos, atual, quantidadeDeElementos - 1);
             Produto produtoAtual = produtos[atual];
             Produto produtoMenor = produtos[menor];
-
             produtos[atual] = produtoMenor;
             produtos[menor] = produtoAtual;
         }
