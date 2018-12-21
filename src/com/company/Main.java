@@ -12,20 +12,25 @@ public class Main {
                 new Produto("Fusca", 17000)
         };
 
-        for(int atual = 0; atual < produtos.length - 1; atual++) {
-            int menor = buscaMenor(produtos, atual, produtos.length - 1);
-            Produto produtoAtual = produtos[atual];
-            Produto produtoMenor = produtos[menor];
-
-            produtos[atual] = produtoMenor;
-            produtos[menor] = produtoAtual;
-        }
+        ordena(produtos);
 
         for(Produto produto : produtos) {
             System.out.println(produto.getNome() + " custa " + produto.getPreco());
         }
 
     }
+
+    private static void ordena(Produto[] produtos) {
+        for(int atual = 0; atual < produtos.length - 1; atual++) {
+            int menor = buscaMenor(produtos, atual, produtos.length-1);
+            Produto produtoAtual = produtos[atual];
+            Produto produtoMenor = produtos[menor];
+
+            produtos[atual] = produtoMenor;
+            produtos[menor] = produtoAtual;
+        }
+    }
+
 
     public static int buscaMenor(Produto[] produtos, int inicio, int termino) {
         int maisBarato = inicio;
