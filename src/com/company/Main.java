@@ -8,25 +8,36 @@ public class Main {
                 new Produto("Lamborghini", 1000000),
                 new Produto("Jipe", 46000),
                 new Produto("Brasilia", 16000),
-                new Produto("Smart", 46000)
+                new Produto("Smart", 46000),
+                new Produto("Fusca", 17000)
         };
 
-        int maisBarato = buscaMenor(produtos, 0, 2);
-        System.out.println("O Veiculo mais barato e: " + produtos[maisBarato].getNome());
-        System.out.println("O valor e R$:" + produtos[maisBarato].getPreco());
+        for(int atual = 0; atual < produtos.length - 1; atual++) {
+            int menor = buscaMenor(produtos, atual, produtos.length - 1);
+            Produto produtoAtual = produtos[atual];
+            Produto produtoMenor = produtos[menor];
+
+            produtos[atual] = produtoMenor;
+            produtos[menor] = produtoAtual;
+        }
+
+        for(Produto produto : produtos) {
+            System.out.println(produto.getNome() + " custa " + produto.getPreco());
+        }
 
     }
 
     public static int buscaMenor(Produto[] produtos, int inicio, int termino) {
-        int maisBarato = 0;
+        int maisBarato = inicio;
         //int termino = produtos.length - 1;
 
-        for(int i = inicio; i < termino; i++) {
-            if(produtos[i].getPreco() < produtos[maisBarato].getPreco()) {
-                maisBarato = i;
+        for(int atual = inicio; atual <= termino; atual++) {
+            if(produtos[atual].getPreco() < produtos[maisBarato].getPreco()) {
+                maisBarato = atual;
             }
         }
 
         return maisBarato;
     }
+
 }
