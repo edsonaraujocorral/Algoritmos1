@@ -21,11 +21,7 @@ public class Main {
         for(int atual = 0; atual < quantidadeDeElementos; atual++) {
             int analise = atual;
             while(analise > 0 && produtos[analise].getPreco() < produtos[analise - 1].getPreco()) {
-                Produto produtoAnalise = produtos[analise];
-                Produto produtoAnaliseMenos1 = produtos[analise - 1];
-
-                produtos[analise] = produtoAnaliseMenos1;
-                produtos[analise - 1] = produtoAnalise;
+                troca(produtos, analise, analise - 1);
                 analise--;
             }
         }
@@ -52,6 +48,14 @@ public class Main {
         }
 
         return maisBarato;
+    }
+
+    public static void troca(Produto[] produtos, int primeiro, int segundo) {
+        Produto primeiroProduto = produtos[primeiro];
+        Produto segundoProduto = produtos[segundo];
+
+        produtos[primeiro] = segundoProduto;
+        produtos[segundo] = primeiroProduto;
     }
 
 }
