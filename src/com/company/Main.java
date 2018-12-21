@@ -12,7 +12,7 @@ public class Main {
                 new Produto("Fusca", 17000)
         };
 
-        ordena(produtos);
+        ordena(produtos, produtos.length);
 
         for(Produto produto : produtos) {
             System.out.println(produto.getNome() + " custa " + produto.getPreco());
@@ -20,9 +20,9 @@ public class Main {
 
     }
 
-    private static void ordena(Produto[] produtos) {
-        for(int atual = 0; atual < produtos.length - 1; atual++) {
-            int menor = buscaMenor(produtos, atual, produtos.length-1);
+    private static void ordena(Produto[] produtos, int quantidadeDeElementos) {
+        for(int atual = 0; atual < quantidadeDeElementos - 1; atual++) {
+            int menor = buscaMenor(produtos, atual, quantidadeDeElementos - 1);
             Produto produtoAtual = produtos[atual];
             Produto produtoMenor = produtos[menor];
 
